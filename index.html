@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>掠奪性期刊與研討會辨識指南</title>
+<meta name="description" content="Predatory Journals & Conferences: A Practical Guide for Academics — 互動式自我檢核工具，整理自實際邀請信查證經驗、國內外圖書館資源與台灣機構級實質審查政策。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1b365d; --navy-2:#24497d; --ink:#1f2937; --muted:#5b6474;
+  --red:#c0392b; --red-bg:#fdecea; --amber:#b45309; --amber-bg:#fff4dc;
+  --green:#15803d; --green-bg:#e7f6ec; --blue:#2563eb; --blue-bg:#e8f0fe;
+  --bg:#f4f6fa; --card:#ffffff; --line:#e3e7ee; --soft:#eef2f7;
+  --radius:14px; --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 16px rgba(16,24,40,.06);
+  --toc-w:270px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC","Segoe UI",system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.75;font-size:16px}
+a{color:var(--blue)}
+h1,h2,h3,h4{line-height:1.3;margin:0 0 .5em}
+h2{font-size:1.65rem;color:var(--navy)}
+h3{font-size:1.25rem;color:var(--navy-2);margin-top:2.2rem;scroll-margin-top:80px}
+h4{font-size:1.05rem;margin-top:1.4rem}
+p{margin:.4em 0 .9em}
+ul,ol{padding-left:1.4em;margin:.3em 0 .9em}
+li{margin:.25em 0}
+code{background:var(--soft);padding:.1em .35em;border-radius:5px;font-size:.92em}
+.small{font-size:.9rem;color:var(--muted)}
+.en{font-family:"Segoe UI",system-ui,sans-serif}
+
+/* progress bar */
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--navy),var(--blue));z-index:60;transition:width .1s linear}
+
+/* topbar */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(27,54,93,.96);backdrop-filter:blur(8px);color:#fff;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.topbar .in{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:1rem;padding:.6rem 1rem;min-height:60px}
+.brand{font-weight:700;font-size:1.05rem;color:#fff;text-decoration:none;display:flex;align-items:center;gap:.5rem;white-space:nowrap}
+.brand .logo{width:32px;height:32px;border-radius:9px;background:#fff;color:var(--navy);display:grid;place-items:center;font-weight:900;font-size:.95rem}
+.topnav{display:flex;gap:.2rem;margin-left:auto;flex-wrap:wrap}
+.topnav a{color:#dbe4f3;text-decoration:none;padding:.35rem .7rem;border-radius:8px;font-size:.93rem;font-weight:500}
+.topnav a:hover,.topnav a.active{background:rgba(255,255,255,.14);color:#fff}
+.menu-btn{display:none;margin-left:auto;background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:8px;padding:.35rem .6rem;font-size:1rem;cursor:pointer}
+
+/* layout */
+.layout{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:var(--toc-w) 1fr;gap:2rem;padding:0 1rem}
+.toc{position:sticky;top:76px;align-self:start;max-height:calc(100vh - 90px);overflow:auto;padding:1rem 0 2rem;font-size:.9rem}
+.toc .grp{margin:0 0 .9rem}
+.toc .grp > a{display:block;font-weight:700;color:var(--navy);text-decoration:none;padding:.3rem .6rem;border-radius:8px}
+.toc .grp > a:hover{background:var(--soft)}
+.toc ul{list-style:none;margin:0;padding:0 0 0 .4rem;border-left:2px solid var(--line)}
+.toc ul a{display:block;color:var(--muted);text-decoration:none;padding:.22rem .6rem;border-left:2px solid transparent;margin-left:-2px;border-radius:0 8px 8px 0}
+.toc ul a:hover{color:var(--navy);background:var(--soft)}
+.toc ul a.active{color:var(--navy);border-left-color:var(--navy);font-weight:700;background:var(--soft)}
+main{min-width:0;padding-bottom:4rem}
+
+/* hero */
+.hero{margin:1.5rem 0 1rem;background:linear-gradient(135deg,#1b365d 0%,#2a5288 60%,#3b6fb0 100%);color:#fff;border-radius:22px;padding:2.4rem 2rem;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.hero:before{content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.07)}
+.hero:after{content:"";position:absolute;right:120px;bottom:-140px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.05)}
+.hero h1{font-size:2.2rem;font-weight:900;margin:0 0 .2em;letter-spacing:.01em}
+.hero .sub{font-size:1.05rem;opacity:.9;margin:0 0 1.2em}
+.hero .lead{max-width:760px;font-size:1.02rem;opacity:.95}
+.hero .meta{display:flex;gap:1.6rem;flex-wrap:wrap;margin:1rem 0 .2rem;padding:.7rem 1rem;border-left:4px solid rgba(255,255,255,.7);background:rgba(255,255,255,.1);border-radius:0 12px 12px 0;position:relative}
+.hero .meta .lab{display:inline-block;font-size:.8rem;opacity:.8;margin-right:.6rem;letter-spacing:.05em}
+.hero .meta b{font-size:1.02rem}
+.hero .chips{display:flex;gap:.6rem;flex-wrap:wrap;margin:1.3rem 0 0}
+.chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:.3rem .9rem;font-size:.88rem}
+.hero .parts{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1.6rem;position:relative}
+.hero .parts a{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:.9rem 1rem;color:#fff;text-decoration:none;transition:.15s}
+.hero .parts a:hover{background:rgba(255,255,255,.22);transform:translateY(-2px)}
+.hero .parts b{display:block;font-size:1.05rem;margin-bottom:.2rem}
+.hero .parts span{font-size:.86rem;opacity:.9}
+
+/* section */
+.part{margin-top:2.5rem;scroll-margin-top:80px}
+.part-head{display:flex;align-items:center;gap:1rem;margin-bottom:.8rem;padding-bottom:.6rem;border-bottom:3px solid var(--navy)}
+.part-head .num{width:52px;height:52px;border-radius:14px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:900;font-size:1.25rem;flex:none}
+.part-head h2{margin:0}
+.part-head .en{display:block;font-size:.9rem;color:var(--muted);font-weight:400}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.2rem 1.4rem;box-shadow:var(--shadow);margin:1rem 0}
+.callout{border-left:5px solid var(--blue);background:var(--blue-bg);border-radius:10px;padding:.9rem 1.1rem;margin:1rem 0}
+.callout.red{border-color:var(--red);background:var(--red-bg)}
+.callout.amber{border-color:var(--amber);background:var(--amber-bg)}
+.callout.green{border-color:var(--green);background:var(--green-bg)}
+.callout.navy{border-color:var(--navy);background:var(--soft)}
+.callout b.t{display:block;margin-bottom:.2rem}
+.quote{background:#fffdf5;border:1px solid #f0e6c8;border-radius:var(--radius);padding:1.2rem 1.4rem;margin:1rem 0}
+.quote .en{font-style:italic;color:#4b5563;font-size:1rem;line-height:1.7}
+.quote .src{display:block;text-align:right;color:var(--muted);font-size:.9rem;margin:.4rem 0 .8rem}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem}
+.tag{display:inline-block;font-size:.78rem;padding:.1rem .55rem;border-radius:999px;font-weight:700;vertical-align:middle}
+.tag.red{background:var(--red-bg);color:var(--red)}
+.tag.amber{background:var(--amber-bg);color:var(--amber)}
+.tag.green{background:var(--green-bg);color:var(--green)}
+.tag.blue{background:var(--blue-bg);color:var(--blue)}
+.tag.navy{background:var(--soft);color:var(--navy)}
+
+/* tables */
+.tbl{width:100%;border-collapse:collapse;margin:.8rem 0 1rem;font-size:.95rem;background:var(--card);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+.tbl th,.tbl td{padding:.6rem .8rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.tbl th{background:var(--navy);color:#fff;font-weight:700}
+.tbl tr:last-child td{border-bottom:0}
+.tbl tr:nth-child(even) td{background:#fafbfd}
+.tbl td.bad{color:var(--red)}
+.tbl td.good{color:var(--green)}
+.tbl td.k{font-weight:700;color:var(--navy);white-space:nowrap}
+.tbl-wrap{overflow-x:auto}
+
+/* tabs */
+.tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin:.6rem 0 0}
+.tabs button{border:1px solid var(--line);background:var(--card);border-radius:10px 10px 0 0;padding:.55rem .9rem;cursor:pointer;font:inherit;font-weight:700;color:var(--muted);display:flex;align-items:center;gap:.4rem}
+.tabs button .n{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:.85rem}
+.tabs button.active{color:var(--ink);border-bottom-color:var(--card);background:var(--card);box-shadow:0 -2px 0 var(--navy) inset}
+.tab-panel{display:none;background:var(--card);border:1px solid var(--line);border-radius:0 12px 12px 12px;padding:1rem 1.3rem}
+.tab-panel.active{display:block}
+.tab-panel h4{margin-top:.2rem}
+.c1{background:#d9534f}.c2{background:#2f6fd6}.c3{background:#2e9e6c}.c4{background:#e08a1e}
+
+/* methods */
+.method-nav{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin:.6rem 0 0}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:.6rem 0}
+.mbox{border-radius:12px;padding:.8rem 1rem;border:1px solid var(--line)}
+.mbox.ok{background:var(--green-bg);border-color:#bfe3cc}.mbox.ng{background:var(--red-bg);border-color:#f3c4bd}.mbox.st{background:var(--blue-bg);border-color:#c4d6f7}.mbox.tip{background:var(--amber-bg);border-color:#f3dcae}
+.mbox b.h{display:block;margin-bottom:.3rem}
+.mbox ul,.mbox ol{margin:0;padding-left:1.3em;font-size:.94rem}
+.mail{background:#fff;border:1px dashed #c4d6f7;border-radius:10px;padding:.7rem .9rem;font-size:.9rem;white-space:pre-line;margin-top:.5rem}
+@media (max-width:820px){.mgrid{grid-template-columns:1fr}}
+/* timeline */
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin:1rem 0;position:relative}
+.timeline:before{content:"";position:absolute;left:4%;right:4%;top:20px;height:3px;background:var(--line);z-index:0}
+.tl{position:relative;z-index:1;text-align:center}
+.tl .y{display:inline-block;background:var(--navy);color:#fff;border-radius:999px;padding:.2rem .9rem;font-weight:700;margin-bottom:.5rem}
+.tl p{font-size:.9rem;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.7rem .8rem;margin:0;text-align:left;min-height:100%}
+
+/* accordion */
+.acc{border:1px solid var(--line);border-radius:12px;background:var(--card);margin:.5rem 0;overflow:hidden}
+.acc > button{width:100%;text-align:left;background:none;border:0;font:inherit;font-weight:700;padding:.8rem 1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--navy)}
+.acc > button:after{content:"＋";font-weight:400;color:var(--muted)}
+.acc.open > button:after{content:"－"}
+.acc .body{display:none;padding:0 1rem 1rem;border-top:1px dashed var(--line)}
+.acc.open .body{display:block}
+
+/* flag cards + screening */
+.flags{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem;margin:.8rem 0}
+.flag{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.75rem .9rem;display:flex;gap:.7rem;align-items:flex-start;cursor:pointer;transition:.15s}
+.flag:hover{border-color:#c9d2e0}
+.flag input{margin-top:.3rem;width:18px;height:18px;accent-color:var(--red);flex:none}
+.flag .k{font-weight:700;color:var(--red);display:block}
+.flag .s{font-size:.92rem;color:var(--ink)}
+.flag.on{background:var(--red-bg);border-color:#f3b6ae}
+.screen-result{border-radius:12px;padding:.9rem 1.1rem;margin:.6rem 0;background:var(--soft);border:1px solid var(--line);display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.screen-result .big{font-size:2rem;font-weight:900;color:var(--navy);line-height:1}
+.screen-result.lv1{background:var(--green-bg)}.screen-result.lv2{background:var(--amber-bg)}.screen-result.lv3{background:var(--red-bg)}
+.meter{height:10px;border-radius:999px;background:#dfe5ee;overflow:hidden;flex:1 1 160px}
+.meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--amber),var(--red));transition:width .3s}
+
+/* checklist */
+.chk-toolbar{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:.6rem 0}
+.btn{border:1px solid var(--line);background:var(--card);border-radius:9px;padding:.42rem .85rem;font:inherit;cursor:pointer;font-weight:600;color:var(--navy)}
+.btn:hover{background:var(--soft)}
+.btn.primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+.chk-group{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:.7rem 0;overflow:hidden}
+.chk-group h4{margin:0;padding:.65rem 1rem;background:var(--soft);font-size:1rem;color:var(--navy)}
+.chk-item{display:flex;gap:.8rem;align-items:center;padding:.6rem 1rem;border-top:1px solid var(--line)}
+.chk-item .q{flex:1;font-size:.96rem}
+.seg{display:flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;flex:none}
+.seg button{border:0;background:var(--card);padding:.3rem .7rem;cursor:pointer;font:inherit;font-size:.88rem;color:var(--muted);border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button.yes.on{background:var(--green);color:#fff}
+.seg button.no.on{background:var(--red);color:#fff}
+.seg button.na.on{background:#94a3b8;color:#fff}
+.chk-item.no{background:#fff8f7}
+.chk-item.yes{background:#f6fcf8}
+.chk-wrap{position:relative}
+.chk-result{position:sticky;bottom:0;z-index:5;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;box-shadow:0 -4px 16px rgba(16,24,40,.08);display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-top:.8rem}
+.chk-result .stat{display:flex;gap:.9rem}
+.chk-result .stat b{font-size:1.4rem;line-height:1}
+.chk-result .stat span{display:block;font-size:.78rem;color:var(--muted)}
+.verdict{flex:1 1 260px;border-radius:10px;padding:.5rem .9rem;font-weight:700}
+.verdict.g{background:var(--green-bg);color:var(--green)}
+.verdict.a{background:var(--amber-bg);color:var(--amber)}
+.verdict.r{background:var(--red-bg);color:var(--red)}
+.verdict.n{background:var(--soft);color:var(--muted);font-weight:500}
+
+/* tool cards */
+.tools{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem;margin:.6rem 0 1rem}
+.tool{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem}
+.tool b{color:var(--navy);display:block;margin-bottom:.15rem}
+.tool p{margin:0 0 .3rem;font-size:.93rem}
+.tool a{font-size:.88rem;word-break:break-all}
+
+/* versus */
+.versus{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.versus .col{border-radius:14px;padding:1rem 1.2rem;border:1px solid var(--line);background:var(--card)}
+.versus .col.w{border-top:6px solid var(--green)}
+.versus .col.b{border-top:6px solid var(--red)}
+.versus h4{margin-top:0}
+
+/* tiers */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin:.8rem 0}
+.tier{border-radius:14px;padding:1rem 1.1rem;border:1px solid var(--line);background:var(--card);border-top-width:6px}
+.tier.r{border-top-color:var(--red)}.tier.a{border-top-color:var(--amber)}.tier.g{border-top-color:var(--green)}
+.tier h4{margin-top:0}
+.tier .lab{font-size:.8rem;color:var(--muted);font-weight:700;letter-spacing:.05em}
+
+/* layers / steps */
+.layers{display:grid;gap:.6rem;margin:.8rem 0}
+.layer{display:grid;grid-template-columns:110px 1fr 1fr;gap:1rem;align-items:center;border-radius:12px;padding:.8rem 1rem;background:var(--card);border:1px solid var(--line);border-left:8px solid var(--line)}
+.layer.r{border-left-color:var(--red)}.layer.a{border-left-color:var(--amber)}.layer.g{border-left-color:var(--green)}
+.layer .lv{font-weight:900;color:var(--navy)}
+.layer .lv small{display:block;font-weight:500;color:var(--muted);font-size:.78rem}
+.layer .act{font-weight:700}
+.layer.r .act{color:var(--red)}.layer.a .act{color:var(--amber)}.layer.g .act{color:var(--green)}
+.steps{counter-reset:s;display:grid;gap:.6rem;margin:.8rem 0}
+.step{display:flex;gap:.9rem;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;align-items:flex-start}
+.step:before{counter-increment:s;content:counter(s);flex:none;width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:900}
+.step b{color:var(--navy)}
+
+/* figures */
+figure{margin:1.2rem 0}
+figure img{width:100%;height:auto;border-radius:12px;border:1px solid var(--line);box-shadow:var(--shadow);cursor:zoom-in;display:block;background:#fff}
+figcaption{font-size:.88rem;color:var(--muted);margin-top:.45rem;text-align:center}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.gallery figure{margin:0}
+
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(10,15,25,.9);z-index:100;display:none;align-items:center;justify-content:center;padding:2rem}
+.lb.open{display:flex}
+.lb img{max-width:96vw;max-height:88vh;border-radius:8px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.lb .cap{position:absolute;bottom:1rem;left:0;right:0;text-align:center;color:#e5e7eb;font-size:.95rem}
+.lb .x{position:absolute;top:1rem;right:1.2rem;background:rgba(255,255,255,.15);color:#fff;border:0;border-radius:50%;width:40px;height:40px;font-size:1.3rem;cursor:pointer}
+
+/* misc */
+.totop{position:fixed;right:1.2rem;bottom:1.2rem;width:46px;height:46px;border-radius:50%;background:var(--navy);color:#fff;border:0;box-shadow:var(--shadow);cursor:pointer;font-size:1.2rem;opacity:0;pointer-events:none;transition:.2s;z-index:40}
+.totop.show{opacity:1;pointer-events:auto}
+.refs li{margin:.5rem 0;font-size:.95rem}
+.refs .note{color:var(--muted);font-size:.86rem}
+footer{border-top:1px solid var(--line);padding:1.5rem 0 3rem;color:var(--muted);font-size:.9rem;text-align:center}
+.stop-look{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin:1rem 0}
+.sl{border-radius:16px;padding:1.1rem;text-align:center;border:1px solid var(--line);background:var(--card)}
+.sl .ic{font-size:2.2rem;line-height:1}
+.sl b{display:block;font-size:1.3rem;margin:.3rem 0 .2rem}
+.sl.s{background:#fdeeee}.sl.l{background:#e9f1fd}.sl.i{background:#e9f7ee}
+.drawer-bg{display:none}
+
+@media (max-width:1100px){
+  .layout{grid-template-columns:1fr}
+  .toc{position:fixed;top:0;left:0;bottom:0;width:min(86vw,320px);background:var(--card);z-index:70;padding:1rem;transform:translateX(-105%);transition:.25s;box-shadow:0 0 30px rgba(0,0,0,.25);max-height:none}
+  .toc.open{transform:none}
+  .drawer-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:65}
+  .drawer-bg.show{display:block}
+  .menu-btn{display:inline-block}
+  .topnav{display:none}
+}
+@media (max-width:820px){
+  .hero{padding:1.6rem 1.2rem}
+  .hero h1{font-size:1.6rem}
+  .hero .parts,.grid3,.grid4,.grid2,.tiers,.stop-look,.gallery{grid-template-columns:1fr}
+  .flags,.tools,.versus{grid-template-columns:1fr}
+  .timeline{grid-template-columns:1fr 1fr}
+  .timeline:before{display:none}
+  .layer{grid-template-columns:1fr}
+  .chk-item{flex-direction:column;align-items:flex-start;gap:.4rem}
+  .card{padding:1rem}
+}
+@media print{
+  .topbar,.toc,#progress,.totop,.chk-toolbar,.lb,.drawer-bg{display:none!important}
+  .layout{grid-template-columns:1fr;display:block}
+  .hero{background:var(--navy)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .tab-panel{display:block!important;margin-bottom:.6rem}
+  .tabs{display:none}
+  .acc .body{display:block!important}
+  .chk-result{position:static;box-shadow:none}
+  figure img{cursor:default}
+  a[href^="http"]:after{content:" (" attr(href) ")";font-size:.8em;color:#666}
+  .card,.tbl,.tool,.flag,.step,.layer,.tier{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="topbar">
+  <div class="in">
+    <a class="brand" href="#top"><span class="logo">PJ</span><span>掠奪性期刊與研討會辨識指南</span></a>
+    <nav class="topnav" id="topnav">
+      <a href="#p1">Part 1 期刊</a>
+      <a href="#p2">Part 2 研討會</a>
+      <a href="#p3">Part 3 行動框架</a>
+      <a href="#s13">期刊檢核</a>
+      <a href="#s23">研討會檢核</a>
+      <a href="#end">結語</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="開啟目錄">☰ 目錄</button>
+  </div>
+</header>
+<div class="drawer-bg" id="drawerBg"></div>
+
+<div class="layout">
+<aside class="toc" id="toc">
+  <div class="grp"><a href="#top">🏠 首頁</a></div>
+  <div class="grp"><a href="#p1">Part 1 掠奪性期刊</a>
+    <ul>
+      <li><a href="#s11">1.1 定義與危害</a></li>
+      <li><a href="#s12">1.2 紅旗指標（快篩）</a></li>
+      <li><a href="#s13">1.3 檢核清單</a></li>
+      <li><a href="#s14">1.4 查證工具</a></li>
+      <li><a href="#s15">1.5 白名單 vs. 黑名單</a></li>
+      <li><a href="#s16">1.6 台灣機構級實質審查</a></li>
+      <li><a href="#s17">1.7 實例對照</a></li>
+    </ul></div>
+  <div class="grp"><a href="#p2">Part 2 掠奪性研討會</a>
+    <ul>
+      <li><a href="#s21">2.1 定義與危害</a></li>
+      <li><a href="#s22">2.2 紅旗指標（快篩）</a></li>
+      <li><a href="#s23">2.3 檢核清單</a></li>
+      <li><a href="#s24">2.4 七種判斷方式</a></li>
+      <li><a href="#s25">2.5 查證工具</a></li>
+      <li><a href="#s26">2.6 實例對照</a></li>
+    </ul></div>
+  <div class="grp"><a href="#p3">Part 3 通用行動框架</a>
+    <ul>
+      <li><a href="#s31">3.1 三層辨識法</a></li>
+      <li><a href="#s32">3.2 標準處理流程</a></li>
+      <li><a href="#s33">3.3 給新進研究者的提醒</a></li>
+      <li><a href="#s34">3.4 正規發表管道</a></li>
+      <li><a href="#s35">3.5 參考來源</a></li>
+    </ul></div>
+  <div class="grp"><a href="#end">結語：停！看！聽！</a></div>
+  <div class="grp"><button class="btn" onclick="window.print()">🖨 列印 / 存成 PDF</button></div>
+</aside>
+
+<main>
+<section class="hero" id="top">
+  <h1>掠奪性期刊與研討會辨識指南</h1>
+  <p class="sub en">Predatory Journals &amp; Conferences: A Practical Guide for Academics</p>
+  <p class="lead">本手冊整理自實際邀請信查證經驗、國內外圖書館資源、以及台灣頂尖醫學研究機構的實質審查政策，提供研究者與研究生一份可攜帶、可勾選、可分享的自我檢核工具。</p>
+  <div class="meta">
+    <div><span class="lab">演講者</span><b>國立中正大學　林育秀 副教授</b></div>
+    <div><span class="lab">GenAI 協作</span><b>Claude × ChatGPT</b></div>
+  </div>
+  <div class="chips">
+    <span class="chip">📋 2 份互動檢核清單（自動計分）</span>
+    <span class="chip">🚩 22 項紅旗快篩</span>
+    <span class="chip">🔎 研討會 7 種判斷方式圖解</span>
+    <span class="chip">🔗 查證工具直達連結</span>
+    <span class="chip">💾 勾選結果自動保存在本機瀏覽器</span>
+  </div>
+  <div class="parts">
+    <a href="#p1"><b>Part 1 ── 掠奪性期刊</b><span>定義與危害 ／ 紅旗指標 ／ 檢核清單 ／ 查證工具 ／ 白名單 vs. 黑名單 ／ 台灣機構級實質審查政策 ／ 實例對照</span></a>
+    <a href="#p2"><b>Part 2 ── 掠奪性研討會</b><span>定義與危害 ／ 紅旗指標 ／ 檢核清單 ／ 七種判斷方式 ／ 查證工具 ／ 實例對照</span></a>
+    <a href="#p3"><b>Part 3 ── 通用行動框架</b><span>三層辨識法 ／ 處理流程 ／ 資源清單 ／ 參考來源</span></a>
+  </div>
+</section>
+
+<!-- ===================== PART 1 ===================== -->
+<section class="part" id="p1">
+  <div class="part-head"><div class="num">1</div><h2>掠奪性期刊<span class="en">Predatory Journals</span></h2></div>
+
+  <h3 id="s11">1.1 什麼是掠奪性期刊？</h3>
+  <p>目前國際學術界最權威的定義，來自 2019 年《Nature》期刊發表的一份跨國共識聲明。43 位來自 10 個國家的學者、期刊編輯、圖書館員與政策制定者，於加拿大渥太華召開共識會議後，提出以下定義：</p>
+  <div class="quote">
+    <p class="en">"Predatory journals and publishers are entities that prioritize self-interest at the expense of scholarship and are characterized by false or misleading information, deviation from best editorial and publication practices, a lack of transparency, and/or the use of aggressive and indiscriminate solicitation practices."</p>
+    <span class="src">— Grudniewicz et al. (2019). <i>Nature</i>, 576, 210-212.</span>
+    <b>【中譯】掠奪性期刊與出版商是以自身利益優先於學術的實體，其特徵為：</b>
+    <ol>
+      <li>提供虛假或誤導性資訊</li>
+      <li>偏離最佳編輯與出版慣例</li>
+      <li>缺乏透明度</li>
+      <li>使用具攻擊性且不加篩選的招攬手法</li>
+    </ol>
+  </div>
+
+  <h4>四個核心特徵的可觀察指標 <span class="small">（點選切換）</span></h4>
+  <div class="tabs" id="featTabs"></div>
+  <div id="featPanels"></div>
+  <figure>
+    <img src="img/features.jpg" alt="掠奪性期刊的四大特徵資訊圖" loading="lazy">
+    <figcaption>掠奪性期刊的四大特徵：看起來像學術期刊，其實是以收費為目的的出版陷阱（點圖放大）</figcaption>
+  </figure>
+
+  <h4>歷史脈絡（Historical Context）</h4>
+  <div class="timeline">
+    <div class="tl"><span class="y">2010</span><p>美國科羅拉多大學丹佛分校圖書館員 <b>Jeffrey Beall</b> 於 2010 年前後首度提出「掠奪性期刊」一詞。</p></div>
+    <div class="tl"><span class="y">2012</span><p>Beall 於《Nature》發表文章，系統性描述掠奪性出版商如何侵蝕開放取用。</p></div>
+    <div class="tl"><span class="y">2017</span><p>「Beall's List」曾是學術界對抗掠奪性期刊的主要參考名單，但因被印度出版商 OMICS Group 提告而停止官方維護。</p></div>
+    <div class="tl"><span class="y">2019</span><p>Grudniewicz 等 43 位學者的《Nature》共識定義，終結了此前十多年「什麼算掠奪性」各說各話的爭議，成為現行國際通用標準。</p></div>
+  </div>
+
+  <h4>定義的爭議與灰色地帶</h4>
+  <div class="acc"><button>光譜性問題（Spectrum problem）</button><div class="body">期刊品質是連續光譜，非「掠奪 vs. 非掠奪」二元對立，中間存在難以歸類的灰色地帶期刊。</div></div>
+  <div class="acc"><button>地域偏見疑慮</button><div class="body">早期 Beall 名單被批評對全球南方期刊有偏見，可能誤傷正在建立聲譽的新期刊。</div></div>
+  <div class="acc"><button>意圖 vs. 觀察指標</button><div class="body">學術倫理專家看重「刻意欺詐意圖」，實務判斷則需依賴「可辨識紅旗」— 兩者常有落差。</div></div>
+  <figure>
+    <img src="img/controversy.jpg" alt="定義爭議資訊圖：光譜性、地域偏見、法律風險、技術定義 vs. 實務定義" loading="lazy">
+    <figcaption>定義爭議：為什麼「掠奪性期刊」的定義本身就是一個議題？（點圖放大）</figcaption>
+  </figure>
+
+  <h4>台灣本土實務判準</h4>
+  <p>在台灣的升等、國科會計畫、學位論文審查實務中，常見的期刊評估依據包含：</p>
+  <div class="tbl-wrap"><table class="tbl">
+    <thead><tr><th>索引系統</th><th>涵蓋範圍</th></tr></thead>
+    <tbody>
+      <tr><td class="k">SCI / SSCI / A&amp;HCI / EI</td><td>Web of Science 系統（Clarivate），自然科學／社會科學／人文／工程</td></tr>
+      <tr><td class="k">Scopus</td><td>Elsevier 的跨領域引文資料庫</td></tr>
+      <tr><td class="k">TSSCI / TCI</td><td>台灣本土索引（國科會與國家圖書館維護）</td></tr>
+      <tr><td class="k">DOAJ</td><td>開放取用期刊白名單（若期刊為 OA）</td></tr>
+    </tbody>
+  </table></div>
+  <p>若一本期刊完全不在上述任何系統中，且展現多項掠奪性紅旗，通常會在升等審查、計畫審查、學位口試中被排除計分或提出質疑。</p>
+  <div class="callout navy"><b class="t">一句話總結</b><b style="font-size:1.15rem">收費 ≠ 掠奪性，免費 ≠ 正規。</b><br>判斷關鍵永遠是「服務內容 vs. 收費宣稱」的落差，以及透明度與學術誠信的展現。</div>
+
+  <h4>為什麼要警惕？</h4>
+  <div class="grid2">
+    <div class="callout red"><b class="t">發表污點永久追隨</b>多數國內大學升等審查與國科會計畫已明確排除掠奪性期刊。</div>
+    <div class="callout red"><b class="t">撤稿困難</b>掠奪性期刊常拒絕撤稿或收取「撤稿費」勒索作者。</div>
+    <div class="callout red"><b class="t">APC 陷阱</b>接受後才通知高額費用（USD 500–2000），不付費即以違約威脅。</div>
+    <div class="callout red"><b class="t">研究無法二次投稿</b>因技術上「已發表」，正規期刊會拒收。</div>
+    <div class="callout red"><b class="t">傷害整體學術聲譽</b>引用假期刊等於引用未經審查的內容。</div>
+  </div>
+
+  <h3 id="s12">1.2 掠奪性期刊常見紅旗</h3>
+  <div class="card">
+    <b>🚩 邀請信紅旗快篩</b>
+    <p class="small">拿出你收到的邀稿信，勾選符合的徵兆。點卡片即可勾選；結果會即時計算。</p>
+    <div class="flags" id="jFlags"></div>
+    <div class="screen-result" id="jFlagResult"></div>
+  </div>
+
+  <h3 id="s13">1.3 出版社與期刊網站檢視要項（分類檢核清單）</h3>
+  <p>本清單整合國際共識定義（Grudniewicz et al., 2019）與國立臺灣大學圖書館之期刊辨識指引，依五個面向逐項確認。<b>若「無法答是」項目超過 4 項，即應高度警戒；超過 8 項，幾乎可判定為掠奪性期刊。</b></p>
+  <div class="chk-toolbar">
+    <span class="small">每題點選「是 / 否 / 未評估」，結果自動儲存在本機瀏覽器。</span>
+    <button class="btn" onclick="resetChecklist('journal')">↺ 重設清單</button>
+    <button class="btn" onclick="window.print()">🖨 列印</button>
+  </div>
+  <div class="chk-wrap">
+  <div id="journalChecklist"></div>
+  <div class="chk-result" id="journalResult"></div>
+  </div>
+  <figure>
+    <img src="img/check1.jpg" alt="辨識期刊品質與真偽的檢視要項 1：檢視該出版社網站 10 項檢查重點" loading="lazy">
+    <figcaption>檢視要項 -1：檢視該出版社網站（10 項檢查重點）（點圖放大）</figcaption>
+  </figure>
+
+  <h3 id="s14">1.4 期刊查證工具</h3>
+  <div class="tabs" id="toolTabs"></div>
+  <div id="toolPanels"></div>
+
+  <h4>查證期刊主編或編輯</h4>
+  <div class="grid2">
+    <div class="tool"><b>ResearchGate</b><p>查看該學者的發表紀錄、機構、共同作者網絡</p></div>
+    <div class="tool"><b>Google Scholar</b><p>查看該學者的引用數、h-index、發表領域是否與期刊主題契合</p></div>
+    <div class="tool"><b>LinkedIn</b><p>確認該學者的職稱、任職機構是否與期刊上宣稱一致</p></div>
+    <div class="tool"><b>該學者所屬大學／機構官網</b><p>最權威的身分驗證來源</p></div>
+  </div>
+  <div class="gallery">
+    <figure><img src="img/check2.jpg" alt="檢視要項 2：利用相關目錄（DOAJ、Ulrichsweb）查證期刊資訊" loading="lazy"><figcaption>檢視要項 -2：利用相關目錄查證期刊資訊（DOAJ、Ulrichsweb）</figcaption></figure>
+    <figure><img src="img/check3.jpg" alt="檢視要項 3：利用相關名錄（COPE、OASPA）查詢期刊資訊" loading="lazy"><figcaption>檢視要項 -3：利用相關名錄查詢期刊資訊（COPE、OASPA）</figcaption></figure>
+    <figure><img src="img/check4.jpg" alt="檢視要項 4：利用相關資料庫查證期刊品質" loading="lazy"><figcaption>檢視要項 -4：利用相關資料庫查證期刊品質（Scopus、WoS、JCR、SJR、JournalGuide、THCI/TSSCI）</figcaption></figure>
+    <figure><img src="img/check5.jpg" alt="檢視要項 5：查證期刊主編或編輯" loading="lazy"><figcaption>檢視要項 -5：查證期刊主編或編輯（ResearchGate、Google Scholar、LinkedIn）</figcaption></figure>
+  </div>
+
+  <h3 id="s15">1.5 白名單 vs. 黑名單：雙向查證資源</h3>
+  <p>學術界對期刊品質的判斷，同時採用「正面表列」與「負面表列」兩種方法。實務上建議兩種都查，交叉驗證。</p>
+  <div class="versus">
+    <div class="col w"><h4>✅ 白名單（White List）</h4><p class="small">正面表列可信任期刊</p>
+      <ul>
+        <li>DOAJ（跨領域 OA）</li>
+        <li>Scopus Sources（跨領域）</li>
+        <li>Web of Science Master Journal List</li>
+        <li>THCI / TSSCI（台灣人社領域）</li>
+        <li>ABDC List（商業管理領域）</li>
+        <li>JQL — Journal Quality List（Harzing）</li>
+        <li>MEDLINE（生醫領域）</li>
+      </ul></div>
+    <div class="col b"><h4>⛔ 黑名單（Black List）</h4><p class="small">負面表列可疑期刊／出版商</p>
+      <ul>
+        <li>Beall's List（非官方更新版）</li>
+        <li>Stop Predatory Journals（存檔版）</li>
+        <li>Cabell's Predatory Reports（付費）</li>
+      </ul></div>
+  </div>
+  <div class="callout amber"><b class="t">⚠ 使用注意事項</b>這些正面或負面表列本身也可能有所爭議，使用時仍需審慎評估：
+    <ul style="margin-bottom:0">
+      <li><b>白名單未收錄 ≠ 掠奪性</b> — 可能只是新期刊尚未通過審核。</li>
+      <li><b>黑名單有列 ≠ 一定是掠奪性</b> — 可能存在誤判或地域偏見。</li>
+      <li><b>最佳實務：</b>黑白名單交叉驗證 ＋ 檢核清單 ＋ 詢問資深同儕。</li>
+    </ul></div>
+  <h4>多方詢問查證管道</h4>
+  <div class="grid2">
+    <div class="tool"><b>相關學科領域專家學者</b><p>資深同事、指導教授、實驗室 PI</p></div>
+    <div class="tool"><b>大學圖書館的學科館員（subject librarian）</b><p>常有查證期刊真偽的經驗與工具</p></div>
+    <div class="tool"><b>學術倫理辦公室 / 研究發展處</b><p>若涉及升等或計畫評估，可正式諮詢</p></div>
+    <div class="tool"><b>Think. Check. Submit.</b><p>COPE、OASPA、DOAJ 共同發起的系統性檢核工具 <a href="https://thinkchecksubmit.org" target="_blank" rel="noopener">thinkchecksubmit.org</a></p></div>
+  </div>
+  <figure>
+    <img src="img/check6.jpg" alt="檢視要項 6：多方詢問查證，黑名單與白名單" loading="lazy">
+    <figcaption>檢視要項 -6：多方詢問查證（專家與圖書館、黑名單、白名單、Think. Check. Submit.）（點圖放大）</figcaption>
+  </figure>
+
+  <h3 id="s16">1.6 台灣機構級的實質審查政策</h3>
+  <p>除了國際共識定義的「掠奪性 vs. 非掠奪性」二分法，台灣頂尖醫學研究機構已建立更細緻的中間類別 —「<b>加強實質審查期刊</b>」。這些期刊不等同於掠奪性，但被機構認定審查品質有疑慮，發表後在升等、計畫、獎勵評估時會被個別檢視內容而非以 IF 分數計分。</p>
+  <div class="card">
+    <h4 style="margin-top:0">個案：國立臺灣大學醫學院「加強實質審查期刊」制度</h4>
+    <p>臺大醫學院於 2025 年 8 月公告以下政策（研發分處公告 pno=5512）：</p>
+    <div class="callout navy">「由於近年學術界對於某些出版社／期刊之營運模式、審查過程、投稿接受率、引用率操作方式或審查標準未著重於科學重要性而有所疑慮，因此提供醫學院『加強實質審查期刊』資訊（分為類別一及類別二期刊），供師生參考。」</div>
+    <div class="grid2">
+      <div class="callout amber"><b class="t">類別一：出版社營運模式或期刊審查過程有疑義者</b>
+        臺大醫學院具名列出的出版社：
+        <ul><li>MDPI</li><li>Frontiers Media</li><li>Baishideng Publishing Group</li><li>OMICS Publishing Group</li><li>Hindawi Publishing Corporation</li><li>及使用類似營運策略之其他出版社</li></ul>
+        <span class="small">常見疑慮：大量出版特刊（special issues）、審查週期過短、投稿接受率偏高、引用率操作方式、審查標準未著重於科學重要性等。</span></div>
+      <div class="callout amber"><b class="t">類別二：期刊自陳審查標準有疑義者</b>
+        期刊官網中明確敘明「不以審查人認定之科學重要性作為論文接受與否之依據」之期刊。這類期刊等於自我聲明審查不看科學重要性，僅看方法是否正確，這也是現代 mega-journal 常見的公開政策。</div>
+    </div>
+    <div class="quote" style="text-align:center">
+      <b>臺大醫學院核心理念</b><br>
+      <span class="en">"At NTUCM, we strive for 'high impact' rather than 'high impact factor'."</span><br>
+      臺大醫學院追求的是「高影響力」，而非「高影響因子」。
+    </div>
+  </div>
+  <figure>
+    <img src="img/ntu.jpg" alt="臺大醫學院加強實質審查期刊資訊圖：類別一、類別二與投稿前自我檢核" loading="lazy">
+    <figcaption>臺大醫學院「加強實質審查期刊」：類別一、類別二與投稿前自我檢核（點圖放大）</figcaption>
+  </figure>
+
+  <div class="acc open"><button>重要說明：此清單 ≠ 掠奪性期刊</button><div class="body">
+    <ul>
+      <li>上述出版社大多仍被 DOAJ、Scopus、Web of Science 收錄，發表本身在制度上有效，不等同於掠奪性期刊。</li>
+      <li><b>OMICS Group</b> 是唯一國際公認的掠奪性出版商（曾被美國 FTC 訴訟並判賠 5,000 萬美元）；其他出版社則屬於灰色地帶，學界看法不一。</li>
+      <li><b>MDPI、Frontiers</b> 是快速崛起的大量 OA 出版商，雖被 Scopus/WoS 收錄，但因特刊比重高、審查週期短受到部分機構質疑。</li>
+      <li><b>Hindawi</b> 於 2021 年被 Wiley 併購，但於 2023 年因論文工廠（paper mill）滲透而大規模撤稿，Wiley 已關閉數本旗下期刊。</li>
+      <li>此清單反映的是「機構級的審查政策」，而非國際共識的掠奪性判定。</li>
+    </ul></div></div>
+  <div class="acc"><button>給讀者的行動建議</button><div class="body">
+    <ul>
+      <li>投稿前先查詢自身所屬機構是否有類似政策（校方研發處、醫學院、學術倫理辦公室）。</li>
+      <li>特別是欲用於升等、博士畢業論文計分的發表，需審慎確認機構認可清單。</li>
+      <li>上述出版社的期刊不代表都不能投，但需自行判斷「學術價值 vs. 制度風險」的權衡。</li>
+      <li>相同題材若能投到學會旗艦期刊或 Q1 傳統出版社（Springer Nature、Elsevier、Wiley 主流刊、BMC 等）通常是更穩健的選擇。</li>
+    </ul></div></div>
+
+  <h4>三層期刊分類架構（整合國際定義 ＋ 台灣機構政策）</h4>
+  <div class="tiers">
+    <div class="tier r"><span class="lab">TIER 1</span><h4>掠奪性期刊</h4><p><b>特徵：</b>符合 Nature 2019 四特徵，未進 DOAJ / Scopus / WoS，無實質同儕審查</p><p style="margin:0"><b>後果與處理：</b><span style="color:var(--red)">升等審查直接排除；強烈建議不要投稿</span></p></div>
+    <div class="tier a"><span class="lab">TIER 2</span><h4>加強實質審查</h4><p><b>特徵：</b>雖被 Scopus / WoS 收錄，但機構認定審查品質有疑慮（如臺大醫學院類別一、二）</p><p style="margin:0"><b>後果與處理：</b><span style="color:var(--amber)">發表有效但不以 IF 計分；審查會實質檢視內容；需權衡風險</span></p></div>
+    <div class="tier g"><span class="lab">TIER 3</span><h4>正規期刊</h4><p><b>特徵：</b>學會旗艦、傳統 Q1、有嚴謹同儕審查與拒稿率，無機構特別警示</p><p style="margin:0"><b>後果與處理：</b><span style="color:var(--green)">值得投資時間投稿；審查嚴謹但發表價值最高</span></p></div>
+  </div>
+  <p class="small">資料來源：國立臺灣大學醫學院研發分處（2025）。〈有關醫學院「加強實質審查期刊」資訊，供參考〉。發布日期 2025-08-15，發布人：顏君容。<a href="https://rd.mc.ntu.edu.tw/bomrd/ntu2/news_txt.asp?pno=5512" target="_blank" rel="noopener">rd.mc.ntu.edu.tw/bomrd/ntu2/news_txt.asp?pno=5512</a></p>
+
+  <h3 id="s17">1.7 實例對照：掠奪性 vs. 灰色地帶</h3>
+  <h4>對照範例 A：URF Publishers「American Journal of Pediatrics and Neonatology」<span class="tag red">明確掠奪性</span></h4>
+  <p>這是典型的掠奪性期刊。與正規 OA 期刊對照：</p>
+  <div class="tbl-wrap"><table class="tbl">
+    <thead><tr><th>檢核項目</th><th>URF Publishers（掠奪性）</th><th>JMIR（正規 OA）</th></tr></thead>
+    <tbody>
+      <tr><td class="k">DOAJ 收錄</td><td class="bad">❌ 未收錄</td><td class="good">✅ 已收錄</td></tr>
+      <tr><td class="k">Scopus / WoS</td><td class="bad">❌ 未收錄</td><td class="good">✅ 已收錄</td></tr>
+      <tr><td class="k">Impact Factor</td><td class="bad">❌ 無</td><td class="good">✅ IF ≈ 5.8</td></tr>
+      <tr><td class="k">聯絡方式</td><td class="bad">❌ Gmail + WhatsApp</td><td class="good">✅ 機構信箱</td></tr>
+      <tr><td class="k">稿件範圍</td><td class="bad">❌ 「no specific topic」</td><td class="good">✅ 明確主題與 scope</td></tr>
+      <tr><td class="k">請介紹朋友投稿</td><td class="bad">❌ 有（傳銷式）</td><td class="good">✅ 無</td></tr>
+      <tr><td class="k">APC 透明度</td><td class="bad">❌ 不公開</td><td class="good">✅ USD 3000（官網明示）</td></tr>
+    </tbody>
+  </table></div>
+  <div class="grid2">
+    <div class="card" style="border-top:6px solid var(--amber)"><h4 style="margin-top:0">對照範例 B：Academia Mental Health &amp; Well-Being <span class="tag amber">灰色地帶，非掠奪性</span></h4><p style="margin:0">這本期刊具備正規 DOAJ 資格，但因期刊過新，尚未進入 SCI/Scopus。屬於「合法但需審慎評估投稿目的」的類型。判斷關鍵是：<b>看目的、看補助、看有無更好的替代選項。</b></p></div>
+    <div class="card" style="border-top:6px solid var(--amber)"><h4 style="margin-top:0">對照範例 C：MDPI / Frontiers 等大量出版商 <span class="tag amber">加強實質審查</span></h4><p style="margin:0">這類期刊（如 MDPI 系列、Frontiers 系列）具備 DOAJ 與 Scopus/WoS 收錄，發表在技術上完全有效；但在臺大醫學院等機構的政策下屬於「加強實質審查」類別，升等審查時會實質檢視論文內容而非以 IF 計分。投稿決策需衡量「<b>快速刊登便利性</b>」與「<b>機構評分認可度</b>」的權衡。</p></div>
+  </div>
+</section>
+
+<!-- ===================== PART 2 ===================== -->
+<section class="part" id="p2">
+  <div class="part-head"><div class="num">2</div><h2>掠奪性研討會<span class="en">Predatory Conferences</span></h2></div>
+
+  <h3 id="s21">2.1 什麼是掠奪性研討會？</h3>
+  <p>掠奪性研討會（predatory conferences）是以「國際會議」為名、實際上未提供有意義同儕審查與學術品質保證的營利型活動。營運模式典型為：註冊一家美國／英國 LLC 空殼公司，建立多個看似「World Congress on X」的網域，以偽造編委名單發送大量邀請信，收取高額註冊費（USD 700–1500）與觀光行程費，實體會場常在最後一刻「延期改線上」而不退費。</p>
+  <h4>為什麼要警惕？</h4>
+  <div class="grid2">
+    <div class="callout red"><b class="t">履歷污點</b>研討會發表列入履歷後，可能被審查委員辨識並質疑學術判斷力。</div>
+    <div class="callout red"><b class="t">註冊費不退</b>註冊費常無法退款，即使會議取消或改線上。</div>
+    <div class="callout red"><b class="t">論文集無索引</b>會議論文集常未在任何正規索引（Scopus、IEEE、ACM DL）中，發表無實質意義。</div>
+    <div class="callout red"><b class="t">「贊助」是釣餌</b>「贊助住宿／機票」多為釣餌話術，實際仍要付全額註冊費。</div>
+    <div class="callout red"><b class="t">回信等於確認有效</b>回信（即使是拒絕）會確認你的 email 有效，後續持續被騷擾。</div>
+  </div>
+
+  <h3 id="s22">2.2 掠奪性研討會常見紅旗</h3>
+  <div class="card">
+    <b>🚩 會議邀請紅旗快篩</b>
+    <p class="small">拿出你收到的會議邀請，勾選符合的徵兆。</p>
+    <div class="flags" id="cFlags"></div>
+    <div class="screen-result" id="cFlagResult"></div>
+  </div>
+  <figure>
+    <img src="img/conf-flags.jpg" alt="掠奪性研討會的紅旗指標資訊圖：12 項警訊" loading="lazy">
+    <figcaption>掠奪性研討會的 12 項紅旗指標：如果看起來太美好，很可能就是陷阱（點圖放大）</figcaption>
+  </figure>
+
+  <h3 id="s23">2.3 掠奪性研討會檢核清單（改編自 Think. Check. Attend.）</h3>
+  <p>收到會議邀請時，逐題確認。<b>若下列項目「無法答是」的數量超過 4 項，建議直接拒絕。</b></p>
+  <div class="chk-toolbar">
+    <span class="small">每題點選「是 / 否 / 未評估」，結果自動儲存在本機瀏覽器。</span>
+    <button class="btn" onclick="resetChecklist('conf')">↺ 重設清單</button>
+    <button class="btn" onclick="window.print()">🖨 列印</button>
+  </div>
+  <div class="chk-wrap">
+  <div id="confChecklist"></div>
+  <div class="chk-result" id="confResult"></div>
+  </div>
+
+  <h3 id="s24">2.4 掠奪性研討會的七種判斷方式</h3>
+  <p>除了紅旗與檢核清單，還可以從以下七個面向主動查證。點選編號切換，每一種方式都附有圖解。</p>
+  <div class="tabs" id="methodTabs"></div>
+  <div id="methodPanels"></div>
+  <div class="method-nav"><button class="btn" id="mPrev">← 上一種</button><span class="small" id="mPos"></span><button class="btn" id="mNext">下一種 →</button></div>
+
+  <h3 id="s25">2.5 研討會查證工具</h3>
+  <div class="tools">
+    <div class="tool"><b>Think. Check. Attend.</b><p>會議真偽 14 題檢核（國際權威）</p><a href="https://thinkcheckattend.org" target="_blank" rel="noopener">https://thinkcheckattend.org</a></div>
+    <div class="tool"><b>CORE Rankings</b><p>資訊科學會議分級（A*、A、B、C）</p><a href="http://portal.core.edu.au" target="_blank" rel="noopener">http://portal.core.edu.au</a></div>
+    <div class="tool"><b>Conference Ranks</b><p>跨領域會議品質評分</p><a href="http://www.conferenceranks.com" target="_blank" rel="noopener">http://www.conferenceranks.com</a></div>
+    <div class="tool"><b>ScimagoJR</b><p>Conference 及論文集 SJR 分數</p><a href="https://www.scimagojr.com" target="_blank" rel="noopener">https://www.scimagojr.com</a></div>
+    <div class="tool"><b>Scopus Source List</b><p>查會議論文集是否被 Scopus 索引</p><a href="https://www.scopus.com/sources" target="_blank" rel="noopener">https://www.scopus.com/sources</a></div>
+    <div class="tool"><b>所屬領域學會官網</b><p>確認是否列於官方旗艦會議（如 IEEE、ACM、AMIA、STTI、IAGG）</p></div>
+  </div>
+
+  <h3 id="s26">2.6 實例對照：掠奪性 vs. 正規會議</h3>
+  <div class="tbl-wrap"><table class="tbl">
+    <thead><tr><th>檢核項目</th><th>掠奪性（如 WGAC、Inovine）</th><th>正規（如 IEEE、STTI、AMIA）</th></tr></thead>
+    <tbody>
+      <tr><td class="k">主辦學會</td><td class="bad">❌ 無真實學會</td><td class="good">✅ 頂級國際學會</td></tr>
+      <tr><td class="k">歷史可驗證</td><td class="bad">❌ 自稱多屆但查無</td><td class="good">✅ 官方沿革</td></tr>
+      <tr><td class="k">過往論文集</td><td class="bad">❌ 找不到</td><td class="good">✅ 有 IEEE Xplore 等</td></tr>
+      <tr><td class="k">專業學會背書</td><td class="bad">❌ 無</td><td class="good">✅ 官方主辦</td></tr>
+      <tr><td class="k">邀請信</td><td class="bad">❌ 大量群發、奉承</td><td class="good">✅ 需先投稿才有回覆</td></tr>
+      <tr><td class="k">贊助住宿承諾</td><td class="bad">❌ 釣餌話術</td><td class="good">✅ 明確 grants 制度</td></tr>
+      <tr><td class="k">地點</td><td class="bad">❌ 觀光巡迴</td><td class="good">✅ 有明確主辦城市邏輯</td></tr>
+      <tr><td class="k">聯絡方式</td><td class="bad">❌ 個人手機／gmail</td><td class="good">✅ 學會秘書處</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ===================== PART 3 ===================== -->
+<section class="part" id="p3">
+  <div class="part-head"><div class="num">3</div><h2>通用行動框架<span class="en">Action Framework</span></h2></div>
+
+  <h3 id="s31">3.1 快速判斷：三層辨識法</h3>
+  <p>收到任何邀請信時，依以下層級順序快速篩選，可節省大量查證時間：</p>
+  <div class="layers">
+    <div class="layer r"><div class="lv">Layer 1<small>秒殺級掠奪性期刊</small></div><div>Gmail 信箱 + WhatsApp、「no specific topic」、假索引清單、請你介紹朋友投稿</div><div class="act">🗑 直接刪除，不回覆，不點連結</div></div>
+    <div class="layer r"><div class="lv">Layer 2<small>掠奪性研討會</small></div><div>多網域交叉、無學會背書、「贊助住宿」、觀光城市巡迴、邀請信無研究關聯</div><div class="act">🗑 直接刪除，不回覆，設定過濾規則</div></div>
+    <div class="layer a"><div class="lv">Layer 3<small>灰色地帶／加強實質審查</small></div><div>如 MDPI、Frontiers 等 — 制度上有效但機構認定審查有疑慮</div><div class="act">⚖ 個案評估：看目的、看補助、看機構政策、看有無更好選項</div></div>
+    <div class="layer g"><div class="lv">Layer 4<small>正規期刊／會議</small></div><div>SCI/SSCI 收錄、學會旗艦、拒稿率高、審查嚴謹</div><div class="act">✅ 值得投資時間投稿</div></div>
+  </div>
+
+  <h3 id="s32">3.2 收到可疑邀請時的標準處理流程</h3>
+  <div class="steps">
+    <div class="step"><div><b>不要立即回覆</b> — 即使是禮貌拒絕。回覆會確認你的 email 有效，對方會將你列入「活躍名單」轉賣。</div></div>
+    <div class="step"><div><b>不要點擊信中任何連結</b> — 特別是「unsubscribe」、註冊連結。點擊即被追蹤。</div></div>
+    <div class="step"><div><b>用官方管道獨立查證</b> — 直接 Google 期刊／會議名稱 + "predatory"，或到 DOAJ / Think Check Attend 網站輸入查詢。</div></div>
+    <div class="step"><div><b>用本手冊的檢核清單逐項確認</b> — 不要憑第一印象，依證據判斷。（<a href="#s13">期刊檢核</a>／<a href="#s23">研討會檢核</a>）</div></div>
+    <div class="step"><div><b>查詢所屬機構的實質審查政策</b> — 例如臺大醫學院「加強實質審查期刊」清單。</div></div>
+    <div class="step"><div><b>若確認掠奪性 → 標為垃圾信 + 建立過濾規則</b> — 把來源網域加入信箱封鎖清單。</div></div>
+    <div class="step"><div><b>若為灰色地帶 → 諮詢資深同儕、圖書館學科館員或學術倫理辦公室</b> — 尤其是升等審查前的發表決策。</div></div>
+    <div class="step"><div><b>將經驗分享給實驗室同仁與研究生</b> — 特別是新進研究人員最容易受害。</div></div>
+  </div>
+  <figure>
+    <img src="img/process.jpg" alt="收到可疑邀請的標準處理流程資訊圖：8 個步驟" loading="lazy">
+    <figcaption>收到可疑邀請的標準處理流程：查證、討論、分享（點圖放大）</figcaption>
+  </figure>
+
+  <h3 id="s33">3.3 給研究生與新進研究人員的提醒</h3>
+  <div class="card">
+    <ul style="margin:0">
+      <li>掠奪性營運商特別鎖定「剛在正規期刊發表的新研究者」— 你越活躍，收到越多。</li>
+      <li>一旦 email 進入共享名單資料庫，會被跨組織轉賣，持續數年被騷擾。</li>
+      <li>「有國際發表」不等於「有價值的發表」— 審查委員會辨識來源期刊／會議的品質。</li>
+      <li>「快速接受、快速出版」通常是缺乏審查的訊號，不是效率的證明。</li>
+      <li>遇到不確定的邀請，問資深教授或圖書館學科館員，永遠比自行決定安全。</li>
+      <li>投稿灰色地帶（如 MDPI、Frontiers）前，先查詢所屬機構的實質審查政策，避免升等時的意外扣分。</li>
+    </ul>
+  </div>
+  <figure>
+    <img src="img/reminders.jpg" alt="給研究生與新進研究人員的提醒資訊圖" loading="lazy">
+    <figcaption>給研究生與新進研究人員的提醒：多一分警覺，少一分風險（點圖放大）</figcaption>
+  </figure>
+
+  <h3 id="s34">3.4 建議追蹤的正規發表管道（以健康資訊學為例）</h3>
+  <div class="tbl-wrap"><table class="tbl">
+    <thead><tr><th>領域</th><th>正規期刊／會議（SCI/Scopus 收錄）</th></tr></thead>
+    <tbody>
+      <tr><td class="k">數位健康 / mHealth</td><td>JMIR、JMIR mHealth and uHealth、Digital Health、npj Digital Medicine</td></tr>
+      <tr><td class="k">醫療資訊學</td><td>JAMIA、BMC Medical Informatics and Decision Making、AMIA Annual Symposium</td></tr>
+      <tr><td class="k">AI 應用於醫療</td><td>MLHC、ACM CHIL、JMIR AI、npj Digital Medicine</td></tr>
+      <tr><td class="k">心理健康研究</td><td>JMIR Mental Health、Journal of Affective Disorders、Journal of Psychiatric Research</td></tr>
+      <tr><td class="k">護理領域</td><td>International Journal of Nursing Studies、JAN、Sigma Theta Tau (STTI) 年會</td></tr>
+      <tr><td class="k">老年醫學</td><td>IAGG World Congress、Journals of Gerontology、Age and Ageing</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 id="s35">3.5 參考來源</h3>
+  <p>本手冊內容整合自以下權威資源，建議讀者進一步查閱：</p>
+  <ol class="refs">
+    <li>Grudniewicz, A., Moher, D., Cobey, K. D., et al. (2019). Predatory journals: no definition, no defence. <i>Nature</i>, 576, 210-212. <span class="note">［國際共識定義來源］</span></li>
+    <li>Beall, J. (2012). Predatory publishers are corrupting open access. <i>Nature</i>, 489, 179. <span class="note">［掠奪性期刊概念首次系統性描述］</span></li>
+    <li>國立臺灣大學圖書館。〈剖析掠奪性期刊（Predatory Journal）〉。臺大圖書館館訊部落格。<a href="https://tul.blog.ntu.edu.tw/archives/17601" target="_blank" rel="noopener">tul.blog.ntu.edu.tw/archives/17601</a> <span class="note">［本手冊 1.3 檢核要項與 1.4/1.5 查證工具參考來源］</span></li>
+    <li>國立臺灣大學醫學院研發分處（2025）。〈有關醫學院「加強實質審查期刊」資訊，供參考〉。發布日期 2025-08-15。<a href="https://rd.mc.ntu.edu.tw/bomrd/ntu2/news_txt.asp?pno=5512" target="_blank" rel="noopener">rd.mc.ntu.edu.tw/bomrd/ntu2/news_txt.asp?pno=5512</a> <span class="note">［本手冊 1.6 台灣機構級實質審查政策來源］</span></li>
+    <li>Think. Check. Submit. — <a href="https://thinkchecksubmit.org" target="_blank" rel="noopener">thinkchecksubmit.org</a> <span class="note">［由 COPE、OASPA、DOAJ 共同發起的期刊真偽檢核工具］</span></li>
+    <li>Think. Check. Attend. — <a href="https://thinkcheckattend.org" target="_blank" rel="noopener">thinkcheckattend.org</a> <span class="note">［由 Knowledge E 發起的研討會真偽檢核工具］</span></li>
+    <li>DOAJ — <a href="https://doaj.org" target="_blank" rel="noopener">doaj.org</a> ｜ Principles of Transparency and Best Practice in Scholarly Publishing（COPE / OASPA / DOAJ / WAME 共同準則）</li>
+  </ol>
+</section>
+
+<!-- ===================== 結語 ===================== -->
+<section class="part" id="end">
+  <div class="part-head"><div class="num">★</div><h2>結語：停！看！聽！<span class="en">Stop. Look. Listen.</span></h2></div>
+  <p>OA 期刊的發行已為必然趨勢，不僅可以讓學者的研究成果快速傳播，同時因自由閱讀而擴大讀者群，達到知識的公平分享與學術影響力的快速延伸。但 OA 期刊的發行也帶來許多斂財之徒的可趁之機，往後學者們若有收到期刊邀稿等信件以及準備投稿前，請務必記得仔細<b>停！看！聽！</b>以慎防「學術詐騙」。</p>
+  <div class="stop-look">
+    <div class="sl s"><div class="ic">✋</div><b>停！STOP</b>不要急著回覆與投稿，先冷靜思考</div>
+    <div class="sl l"><div class="ic">🔍</div><b>看！LOOK</b>仔細檢視期刊與出版社，查證相關資訊</div>
+    <div class="sl i"><div class="ic">👂</div><b>聽！LISTEN</b>多方諮詢專家、同儕或圖書館的意見</div>
+  </div>
+  <figure>
+    <img src="img/conclusion.jpg" alt="結語：停看聽，慎防學術詐騙" loading="lazy">
+    <figcaption>結語：謹慎選擇、安心投稿，讓研究發揮更大的力量（點圖放大）</figcaption>
+  </figure>
+  <div class="callout green"><b class="t">本手冊可自由複製、修改、分享</b>建議發放對象：研究生、新進助理教授、初次接觸國際發表的研究人員。</div>
+</section>
+
+<footer>
+  掠奪性期刊與研討會辨識指南 ・ Predatory Journals &amp; Conferences: A Practical Guide for Academics<br>
+  演講者：國立中正大學 林育秀 副教授 ・ GenAI 協作：Claude × ChatGPT<br>
+  <span class="small">互動網頁版 ・ 勾選結果僅儲存於你自己的瀏覽器，不會上傳。</span>
+</footer>
+</main>
+</div>
+
+<div class="lb" id="lb"><button class="x" id="lbClose" aria-label="關閉">✕</button><img id="lbImg" src="" alt=""><div class="cap" id="lbCap"></div></div>
+<button class="totop" id="totop" aria-label="回到頂端">↑</button>
+
+<script>
+/* ---------- 資料 ---------- */
+const FEATURES=[
+  {n:'①',c:'c1',t:'虛假或誤導性資訊',en:'False or misleading information',items:[
+    '宣稱被不存在或無關的索引服務收錄（如把 Google Scholar、ResearchGate、Zenodo 當作「索引」）',
+    '偽造或誇大 Impact Factor（自創「Universal Impact Factor」等假指標）',
+    '未經同意盜用學者姓名作編委',
+    '假冒英美地址但實際印度營運']},
+  {n:'②',c:'c2',t:'偏離最佳編輯與出版慣例',en:'Deviation from best practices',items:[
+    '無真正同儕審查，或流於形式（幾天內就接受）',
+    '無抄襲檢測與倫理審查',
+    '無長期典藏（Portico、CLOCKSS）',
+    '不遵守 COPE 出版倫理標準',
+    '拒絕撤稿或以撤稿費勒索作者']},
+  {n:'③',c:'c3',t:'缺乏透明度',en:'Lack of transparency',items:[
+    'APC 費用不公開，或在稿件接受後才通知',
+    '編輯部聯絡資訊模糊（只有 Gmail、web form）',
+    '所有權結構不明',
+    '審查流程、審稿人身分、拒稿率完全不公布']},
+  {n:'④',c:'c4',t:'具攻擊性且不加篩選的招攬',en:'Aggressive & indiscriminate solicitation',items:[
+    '大量寄發邀稿信給不相干領域的研究者',
+    '過度奉承話術（"eminent researcher like you"）',
+    '傳銷式招募（"請介紹您的朋友和同事投稿"）',
+    '虛構時間急迫感（"下期馬上要出刊"）']}
+];
+const J_FLAGS=[
+  ['聯絡資訊','編輯使用 Gmail / Yahoo 個人信箱、WhatsApp 個人手機、無機構官方 email'],
+  ['稿件範圍','「no specific topic, any research welcome」／什麼類型都收（Editorial、Case Report、Clinical Image、Letter 全部歡迎）'],
+  ['虛假索引','宣稱被 ResearchGate、Academia、SCRIBD、Publons、ORCID、Zenodo「索引」（這些都不是學術索引服務）'],
+  ['開場話術','過度奉承（eminent researcher / lucky to contact you）、大量驚嘆號、商業廣告式語氣'],
+  ['傳銷式招募','「如果您沒空，請介紹您的朋友或同事投稿」— 正規期刊絕不使用'],
+  ['英文文法錯誤','缺 be 動詞、時態錯誤、標點異常 — 反映印度團隊模板信而非英美編輯部'],
+  ['虛構急迫感','「下期馬上要出刊，請本週投稿」— 逼迫倉促決定'],
+  ['領域錯配','你研究 A，卻收到 B、C、D 領域期刊邀請（代表對方僅隨機撈名單）'],
+  ['大量寄件工具','email 中出現 SendGrid、Mailchimp 追蹤連結（u****.ct.sendgrid.net）'],
+  ['APC 資訊不透明','邀請信不提費用，或需點連結才顯示（正規期刊在官網明確標示）']
+];
+const C_FLAGS=[
+  ['主辦方','找不到任何真實學會（如 IEEE、ACM、IAGG、STTI、ICN）背書'],
+  ['網域混亂','一個活動出現多個無關聯網域（信件、註冊、聯絡各不同域名）'],
+  ['會議主題','過廣（「Nursing & Healthcare」整個學科通吃）或跨多個不相關領域'],
+  ['地點策略','熱門觀光城市巡迴（Barcelona、Dubai、Rome、Berlin、Paris、Singapore）'],
+  ['名稱膨脹','自稱「World」「International」「Global」但無真實國際學會支持'],
+  ['宣稱歷史','「第 16 屆」但學界從無人聽過、Google Scholar 找不到過往論文集'],
+  ['邀請信話術','大量奉承詞、未經投稿即邀 speaker、「贊助住宿」但註冊費未提'],
+  ['委員會','「Prof. XXX」用個人手機（+44、+91 開頭）、無機構信箱、Google 查無對應學者'],
+  ['過往紀錄','前一屆「因不可抗力延期改線上」— 這是收費不退的固定手法'],
+  ['論文出版承諾','模糊承諾「recommend for Q1 journal review」但期刊領域完全不符會議主題'],
+  ['付款方式','要求私人 PayPal / 銀行電匯，不使用正規會議註冊系統'],
+  ['email 基礎設施','大量 SendGrid、Mailchimp 追蹤連結；寄件人非會議官方信箱']
+];
+const J_CHECK=[
+  ['A. 網站與聯絡資訊透明度',[
+    '出版社與期刊名稱是否在網站上明確標示？',
+    '出版社是否有真實可查地址（非僅郵政信箱，可用 Google Maps 檢視地址所在地實際情形）？',
+    '是否使用出版社專屬 email（@publisher.com）而非個人 Gmail / Yahoo 帳號？',
+    '主編與編輯群姓名及聯絡方式是否明確列出？',
+    '編輯委員是否可在其大學／機構官網獨立查證身分？']],
+  ['B. 審查機制與出版倫理',[
+    '是否明確說明同儕審查機制（單盲、雙盲、開放審查）？',
+    '是否有明確的抄襲檢測政策？',
+    '是否聲明對不實文章的處置方式（含撤稿與更正政策）？',
+    '是否要求作者聲明著作內容客觀公正並公開資助經費來源？',
+    '是否要求編輯與審稿者聲明立場中立並迴避相關利益衝突？',
+    '出版商是否為 COPE、OASPA、STM 等出版倫理組織的會員？']],
+  ['C. 費用、授權與典藏',[
+    'APC（文章處理費）是否在官網明確公開（不需投稿後才知道）？',
+    '網站與所有刊出文章是否有明確的版權宣告與授權條款（如 CC BY、CC BY-NC）？',
+    '是否說明作者人格權與著作權處理方式？',
+    '期刊是否被 Portico、CLOCKSS 等長期典藏服務保存？',
+    '過期文章與過刊內容是否有明確的公開取用與典藏方式？']],
+  ['D. 索引收錄與內容品質',[
+    '該期刊是否被 DOAJ（Directory of Open Access Journals）收錄？',
+    '該期刊是否被 Scopus 或 Web of Science（SCI / SSCI / A&HCI）收錄？',
+    '過往發表文章的品質是否經得起檢驗（實際下載 3–5 篇看看）？',
+    '該期刊是否被 Ulrichsweb、JournalGuide 等書目資料庫查證通過？']],
+  ['E. 邀稿與行銷方式',[
+    '邀稿方式是否合宜（無傳銷式招募、無過度奉承、無虛構急迫感）？',
+    '英文文法與正式度是否符合學術期刊標準？',
+    '被邀稿的原因是否與你近期發表明確相關（而非隨機發信）？']]
+];
+const C_CHECK=[
+  ['會議檢核項目（14 題）',[
+    '你是否認識主辦的學會、協會或組織？',
+    '主辦方是否為真實可查的專業學會（在學會官網可找到此會議）？',
+    '你能否輕鬆找到具體會議地點（完整地址、飯店、會議廳）？',
+    '你或你的同事是否曾參加過該會議前幾屆？',
+    '會議收費結構是否清楚公開（註冊費、會員價、學生價）？',
+    '若你是受邀 speaker，費用豁免是否明確承諾（書面）？',
+    '你是否認識任何贊助商、keynote speaker？',
+    '會議網站是否呈現完整資訊（投稿截止日、議程、編委、地點）？',
+    '你是否讀過該會議前一屆的論文集？',
+    '論文集是否明確說明會送哪些索引（Scopus、IEEE Xplore、ACM DL、Web of Science）？',
+    '論文集出版商是否為 COPE、DOAJ、OASPA 會員？',
+    '你被邀請的原因是否與你近期發表明確相關（而非隨機發信）？',
+    '會議主題是否與你的研究領域高度契合？',
+    '網站上的英文與細節是否呈現專業品質（無明顯文法錯誤）？']]
+];
+const TOOLS=[
+  {t:'目錄與白名單資料庫',tag:'green',items:[
+    ['DOAJ','正規 OA 期刊白名單（依 COPE / OASPA 準則審查）；已除名期刊清單見 DOAJ Blog','https://doaj.org'],
+    ['Ulrichsweb','全球性期刊書目資料庫，可查證期刊刊名與出版社相關資訊','http://ulrichsweb.serialssolutions.com'],
+    ['JournalGuide','投稿選刊建議 ＋ 期刊查證（含 SNIP 值、被收錄資料庫、期刊是否已查證）','https://www.journalguide.com'],
+    ['Scopus Sources','查詢期刊是否被 Scopus 收錄','https://www.scopus.com/sources'],
+    ['Master Journal List','Web of Science / SCI / SSCI / A&HCI 索引查詢','https://mjl.clarivate.com'],
+    ['THCI / TSSCI 名單','台灣人文社會科學研究中心維護，國內期刊評估依據','https://www.hss.ntu.edu.tw/zh-tw/thcitssci']]},
+  {t:'出版倫理與會員名錄',tag:'blue',items:[
+    ['COPE','全球一萬多名關注出版倫理的期刊編輯組成；可依期刊名、出版社、主編查證','https://publicationethics.org/members/journals'],
+    ['OASPA','進行開放取用的出版社組成，會員申請需通過嚴謹審核','https://oaspa.org/membership/members'],
+    ['Think. Check. Submit.','期刊真偽自我檢核工具（由 COPE、OASPA、DOAJ 等共同發起）','https://thinkchecksubmit.org']]},
+  {t:'黑名單與可疑清單（參考用，非權威）',tag:'red',items:[
+    ["Beall's List",'原名單於 2017 年由 Jeffrey Beall 停止官方維護；非官方更新版仍在運作','https://beallslist.net'],
+    ['Stop Predatory Journals','可疑期刊清單（原網址已失效，可查詢網路存檔）','https://web.archive.org/web/*/predatoryjournals.com'],
+    ["Cabell's Predatory Reports",'掠奪性期刊付費資料庫（大學圖書館常有訂閱）','']]}
+];
+
+/* ---------- 小工具 ---------- */
+const $=(s,r=document)=>r.querySelector(s);
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const store={get(k,d){try{const v=localStorage.getItem('pjc.'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('pjc.'+k,JSON.stringify(v))}catch(e){}}};
+
+/* ---------- 四大特徵 tabs ---------- */
+(function(){
+  const tabs=$('#featTabs'),panels=$('#featPanels');
+  FEATURES.forEach((f,i)=>{
+    const b=document.createElement('button');b.innerHTML=`<span class="n ${f.c}">${i+1}</span>${f.t}`;
+    b.onclick=()=>{tabs.querySelectorAll('button').forEach((x,j)=>x.classList.toggle('active',j===i));panels.querySelectorAll('.tab-panel').forEach((x,j)=>x.classList.toggle('active',j===i))};
+    tabs.appendChild(b);
+    const p=document.createElement('div');p.className='tab-panel';
+    p.innerHTML=`<h4>${f.n} ${f.t} <span class="small en">(${f.en})</span></h4><b class="small">常見具體徵兆</b><ul>${f.items.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;
+    panels.appendChild(p);
+  });
+  tabs.querySelector('button').classList.add('active');panels.querySelector('.tab-panel').classList.add('active');
+})();
+
+/* ---------- 查證工具 tabs ---------- */
+(function(){
+  const tabs=$('#toolTabs'),panels=$('#toolPanels');
+  TOOLS.forEach((g,i)=>{
+    const b=document.createElement('button');b.innerHTML=`<span class="tag ${g.tag}">${i+1}</span>${g.t}`;
+    b.onclick=()=>{tabs.querySelectorAll('button').forEach((x,j)=>x.classList.toggle('active',j===i));panels.querySelectorAll('.tab-panel').forEach((x,j)=>x.classList.toggle('active',j===i))};
+    tabs.appendChild(b);
+    const p=document.createElement('div');p.className='tab-panel';
+    p.innerHTML=`<h4>${g.t}</h4><div class="tools">${g.items.map(([n,d,u])=>`<div class="tool"><b>${esc(n)}</b><p>${esc(d)}</p>${u?`<a href="${u}" target="_blank" rel="noopener">${u}</a>`:''}</div>`).join('')}</div>`;
+    panels.appendChild(p);
+  });
+  tabs.querySelector('button').classList.add('active');panels.querySelector('.tab-panel').classList.add('active');
+})();
+
+/* ---------- 七種判斷方式 ---------- */
+const METHODS=[
+ {t:'主辦單位',sub:'看看誰主辦，才能判斷是否可信',img:'conf1.jpg',
+  why:'具有公信力的研討會，通常由學校、機構、專業學會舉辦，應可從該單位的官方網頁查到會議資訊；參加您或同儕認識的機構所舉辦之會議較為妥當。Lang et al. (2019) 研究指出，由營利組織舉辦的研討會，通常其科學或教育價值較低，可藉此評估合適參加與否。',
+  ok:['由知名大學、研究機構、專業學會舉辦','可在主辦單位的官方網頁查到會議資訊','主辦單位具學術聲譽，您或同儕熟悉','會議主題與該單位的專業領域相符','有明確的學術委員會與聯絡資訊'],
+  ng:['由營利性質公司或不知名單位主辦','在其官方網頁找不到會議資訊或資訊不完整','主辦單位較少被學術社群認識','會議主題涵蓋過於廣泛、與該單位領域不符','缺乏明確的學術委員會資訊']},
+ {t:'贊助者',sub:'留意會議的贊助者，查詢該贊助單位是否有相關出版資訊',img:'conf2.jpg',
+  why:'掠奪性研討會常由商業公司或不知名機構贊助，其主要目的可能是營利而非學術交流。透過查詢贊助單位的背景與是否有相關出版資訊，可以更了解該研討會的真實性與可信度。',
+  ok:['由知名大學、研究機構、專業學會、政府單位或國際組織贊助','可在官方網站查到贊助單位的詳細資訊','有明確的學術或公益性質','該單位有出版學術期刊或研究成果','贊助單位的名稱、標誌、聯絡資訊清楚且真實'],
+  ng:['不知名的商業公司或顧問公司','名稱與已知的掠奪性期刊出版社相同或相關','在官方網站查不到完整資訊','贊助單位本身主要業務為出版期刊或收取費用','缺乏學術背景或公益性質','提供的聯絡資訊模糊（僅有郵政信箱或個人信箱）'],
+  tip:'若研討會的主要贊助者，是以出版期刊或收取費用為主的商業公司，就要特別謹慎評估其學術目的與可信度。'},
+ {t:'會議名稱與簡介',sub:'仔細比對會議名稱與內容，小細節也可能是關鍵',img:'conf3.jpg',
+  why:'Bowman (2014) 舉例，多位學者受邀參加「XXXXX-2013」的會議，實際到場發現並非該領域知名的「XXXXX 2013」研討會，原來偽造的會議名稱多了一個標點符號「-」，根本不是美國 XXXXX 學會所舉辦的研討會。除了會議名稱，也需要留意會議簡介，如果內容太簡略、廣泛、像是教科書容易看到的文字，建議不要參加這種研討會（Lang et al., 2019）。',
+  steps:{h:'檢查重點',items:['會議名稱是否與知名會議完全相同？（留意標點符號、縮寫、年份、地點等細節）','是否可在主辦單位的官方網站查到會議資訊？','會議簡介是否具體、有明確主題與議程內容？','是否列出講者、委員會成員與聯絡資訊？','內容是否過於廣泛、空泛，沒有明確的學術焦點？','是否有與您領域相關的學術社群與口碑？']},
+  tip:'一個小小的標點符號、看似正式的名稱，都可能是陷阱！投稿與參加研討會前，請務必仔細查證。'},
+ {t:'向前輩與同儕打聽',sub:'多問、多聽、多比較，就能找到可靠的會議',img:'conf4.jpg',
+  why:'向同行研究者打聽，或請前輩、指導教授推薦合適的會議，建議參加他們曾去過的研討會，並參考國科會推薦國際會議名單。',
+  steps:{h:'三個管道',items:['向同行研究者打聽：與同領域的研究者交流，了解他們是否曾參加過該會議，以及對該會議的評價與經驗分享。','請前輩或指導教授推薦：向有經驗的前輩或指導教授請益，他們的建議通常能提供更可靠的參考。','參考國科會（國家科學及技術委員會）公布的推薦國際會議名單：可查詢會議名稱與主辦單位、日期與地點、所屬領域分類、是否為國際知名會議。路徑：國科會官網 ▸ 國際合作 ▸ 國際會議 ▸ 推薦國際會議名單。']},
+  link:['國科會官網','https://www.nstc.gov.tw/'],
+  tip:'國科會推薦名單是經過審查後的參考名單，可作為初步判斷的依據。'},
+ {t:'由會議論文資料庫查證',sub:'查一查、比一比，讓參加的會議更有保障',img:'conf5.jpg',
+  why:'若是行之多年的研討會，其發表之會議論文應會收錄於資料庫中。透過資料庫查證，可以確認會議的名稱、主辦單位是否正確，避免參加來路不明或虛假的會議。',
+  steps:{h:'如何在臺大圖書館查詢',items:['進入臺大圖書館資料庫系統（ntu.primo.exlibrisgroup.com）','在「資料庫類型」中選擇「會議論文 Proceedings」，目前共有 8 個資料庫']},
+  ok:['ProceedingsFirst：涵蓋多領域會議論文','ACM Digital Library：電資工程領域重要的會議論文資料庫','IEEE Xplore：電機、電子、資訊工程領域的會議論文資料庫','CPCI（Conference Proceedings Citation Index，Clarivate）：收錄國際重要會議論文（臺大未訂購時，可透過其他單位或付費查詢）','綜合領域：Scopus（多學科會議論文）、華藝線上圖書館（中文會議論文）'],okh:'常見的會議論文資料庫',
+  ng:['確認會議名稱是否正確、是否與主辦單位一致','查看會議論文的收錄年份、出版單位與會議地點','留意資料庫中的會議簡介、論文篇數與內容是否符合該領域的學術水準','若查不到任何相關會議論文，需提高警覺，謹慎評估參加與否'],ngh:'查詢時的注意事項',
+  link:['臺大圖書館資料庫系統','https://ntu.primo.exlibrisgroup.com']},
+ {t:'向會議場館求證',sub:'打個電話確認一下，多一分安心',img:'conf6.jpg',
+  why:'研討會的舉辦地點通常是學校、飯店、渡假村等，可先聯繫會場方確認是否有該研討會租借場地（聯合新聞網，2024）。掠奪性研討會可能會虛構或偽造會議地點，即使列出知名學校、飯店或國際會議中心的名稱，也不代表真的有租借該場地舉辦。直接向會場方確認，是辨識研討會真偽的有效方法。',
+  steps:{h:'查證步驟',items:['查詢會場資訊：上網搜尋會議地點（學校、飯店、渡假村、國際會議中心等）的官方網站，找到聯繫方式。','聯繫會場方：透過電話或電子郵件，詢問該時段是否有該研討會租借場地。','核對資訊：確認會議名稱、主辦單位、舉辦日期與會議規模等資訊是否一致。']},
+  ng:['會場方表示沒有這場會議的租借紀錄','舉辦日期或會議名稱與邀請信內容不符','提供的聯繫方式（電話、Email）並非官方管道','會場地址不完整或難以查證'],
+  tip:'盡量使用官方網站上的聯絡資訊；保留與會場方的聯繫紀錄（Email 或通話紀錄）；若對方無法提供明確回覆，建議提高警覺；即使會議地點是真實存在，仍需綜合其他面向（如主辦單位、論文資料庫等）一併判斷。'},
+ {t:'向與會來賓求證',sub:'主動求證，多一份確認，少一分風險',img:'conf7.jpg',
+  why:'若研討會邀請知名學者專家擔任主講人，可主動聯繫該學者，確認其是否真的受邀出席這場研討會（聯合新聞網，2024）。有些掠奪性研討會會盜用知名學者專家的照片與資料，假裝邀請他們擔任主講人（keynote speaker）或主持人，以增加研討會的可信度，吸引報名者參加。若沒有事先查證，可能誤以為是國際知名會議，不僅造成金錢損失，也可能影響個人學術聲譽。',
+  steps:{h:'查證步驟',items:['確認聯繫資訊：從學校、機構或個人官方網站取得該學者的正式聯繫方式（Email 或辦公室電話）。','撰寫有禮貌的確認信：簡單說明來意，並提供研討會名稱、時間、地點等資訊，詢問是否確實受邀。','核對回覆內容：若對方表示並未受邀，則該研討會可能為掠奪性會議，應避免參加。']},
+  mail:'主旨：詢問是否受邀參加 XXX 研討會\n\nDear Professor XXX,\n您好！\n我最近收到一個關於「XXX 研討會」的資訊，會議網站上列出您為 keynote speaker。想請問您是否確實受邀出席此場研討會？\n非常感謝您的回覆！\n\nBest regards,\n您的姓名\n所屬單位',
+  ng:['官網列出的主講人名單，無法在其他可信來源找到','主講人的照片、簡介與其他會議重複使用','學者表示從未被邀請，或不知道有這場會議','提供的聯繫資訊是一般信箱（如 Gmail、Yahoo），而非學校或機構的正式信箱','會議網站無法提供主講人的具體演講題目或議程'],
+  tip:'主動求證是保護自己的重要步驟；使用官方聯繫資訊，避免透過研討會網站提供的信箱；若發現資料造假，可向所屬學校或相關學會反映；也可與指導教授、同儕討論，獲得更多建議。'}
+];
+(function(){
+  const tabs=$('#methodTabs'),panels=$('#methodPanels'),pos=$('#mPos');let cur=0;
+  const list=a=>a.map(x=>`<li>${esc(x)}</li>`).join('');
+  METHODS.forEach((m,i)=>{
+    const b=document.createElement('button');b.innerHTML=`<span class="n" style="background:var(--navy)">${i+1}</span>${m.t}`;b.onclick=()=>show(i);tabs.appendChild(b);
+    const p=document.createElement('div');p.className='tab-panel';
+    let h=`<h4>${i+1}. ${esc(m.t)} <span class="small">— ${esc(m.sub)}</span></h4><p>${esc(m.why)}</p><div class="mgrid">`;
+    if(m.steps)h+=`<div class="mbox st"><b class="h">🔎 ${esc(m.steps.h)}</b><ol>${list(m.steps.items)}</ol>${m.mail?`<div class="mail">${esc(m.mail)}</div>`:''}</div>`;
+    if(m.ok)h+=`<div class="mbox ok"><b class="h">✅ ${esc(m.okh||'可信的特徵（較建議參加）')}</b><ul>${list(m.ok)}</ul></div>`;
+    if(m.ng)h+=`<div class="mbox ng"><b class="h">${m.ngh?'📝':'❌'} ${esc(m.ngh||'可疑的特徵（需謹慎評估）')}</b><ul>${list(m.ng)}</ul></div>`;
+    if(m.tip)h+=`<div class="mbox tip"><b class="h">💡 小提醒</b>${esc(m.tip)}</div>`;
+    h+=`</div>`;
+    if(m.link)h+=`<p class="small">🔗 ${esc(m.link[0])}：<a href="${m.link[1]}" target="_blank" rel="noopener">${m.link[1]}</a></p>`;
+    h+=`<figure><img src="img/${m.img}" alt="掠奪性研討會判斷方式 ${i+1}：${esc(m.t)}" loading="lazy"><figcaption>掠奪性研討會判斷方式 ${i+1}：${esc(m.t)}（點圖放大）</figcaption></figure>`;
+    p.innerHTML=h;panels.appendChild(p);
+  });
+  function show(i){cur=(i+METHODS.length)%METHODS.length;tabs.querySelectorAll('button').forEach((x,j)=>x.classList.toggle('active',j===cur));panels.querySelectorAll('.tab-panel').forEach((x,j)=>x.classList.toggle('active',j===cur));pos.textContent=`${cur+1} / ${METHODS.length}`}
+  $('#mPrev').onclick=()=>{show(cur-1);tabs.scrollIntoView({block:'start'})};$('#mNext').onclick=()=>{show(cur+1);tabs.scrollIntoView({block:'start'})};
+  show(0);
+})();
+
+/* ---------- 紅旗快篩 ---------- */
+function buildFlags(key,data,gridId,resId,layerText){
+  const grid=$('#'+gridId),res=$('#'+resId);
+  let st=store.get('flags.'+key,[]);
+  data.forEach(([k,s],i)=>{
+    const lab=document.createElement('label');lab.className='flag';
+    lab.innerHTML=`<input type="checkbox" ${st.includes(i)?'checked':''}><span><span class="k">${esc(k)}</span><span class="s">${esc(s)}</span></span>`;
+    lab.querySelector('input').onchange=e=>{lab.classList.toggle('on',e.target.checked);st=e.target.checked?[...new Set([...st,i])]:st.filter(x=>x!==i);store.set('flags.'+key,st);render()};
+    if(st.includes(i))lab.classList.add('on');
+    grid.appendChild(lab);
+  });
+  function render(){
+    const n=st.length,tot=data.length,pct=Math.round(n/tot*100);
+    let cls='',msg='';
+    if(n===0){msg='尚未勾選。請對照你收到的邀請信逐項確認。'}
+    else if(n<=2){cls='lv1';msg='出現少數紅旗。請保持警覺，並用下方檢核清單逐項確認後再決定。'}
+    else if(n<=4){cls='lv2';msg='多項紅旗同時出現，高度可疑。建議不要回覆、不要點連結，先完成檢核清單並向資深同儕或學科館員查證。'}
+    else{cls='lv3';msg=`紅旗密集出現，依三層辨識法屬於 <b>${layerText}</b>：直接刪除、不回覆、不點連結，並設定過濾規則。`}
+    res.className='screen-result '+cls;
+    res.innerHTML=`<div class="big">${n}<span class="small"> / ${tot}</span></div><div class="meter"><i style="width:${pct}%"></i></div><div style="flex:1 1 100%">${msg} ${n?'<button class="btn" style="margin-left:.4rem" onclick="clearFlags(\''+key+'\')">清除</button>':''}</div>`;
+  }
+  window['_renderFlags_'+key]=()=>{st=[];grid.querySelectorAll('input').forEach(c=>{c.checked=false;c.closest('.flag').classList.remove('on')});store.set('flags.'+key,[]);render()};
+  render();
+}
+function clearFlags(key){window['_renderFlags_'+key]()}
+buildFlags('journal',J_FLAGS,'jFlags','jFlagResult','Layer 1（秒殺級掠奪性期刊）');
+buildFlags('conf',C_FLAGS,'cFlags','cFlagResult','Layer 2（掠奪性研討會）');
+
+/* ---------- 檢核清單 ---------- */
+const CHECKS={
+  journal:{data:J_CHECK,box:'journalChecklist',res:'journalResult',verdict(no,na,tot){
+    if(na===tot)return['n','尚未開始評估。逐題點選後會在此顯示判定。'];
+    let v;
+    if(no>8)v=['r',`「無法答是」已達 ${no} 項（>8）：幾乎可判定為掠奪性期刊，強烈建議不要投稿。`];
+    else if(no>4)v=['a',`「無法答是」已達 ${no} 項（>4）：應高度警戒，建議向學科館員或資深同儕查證後再決定。`];
+    else v=['g',`目前「無法答是」${no} 項（≤4）：尚未達警戒門檻。`];
+    if(na>0)v[1]+=` 仍有 ${na} 題未評估，結論可能改變。`;
+    return v;}},
+  conf:{data:C_CHECK,box:'confChecklist',res:'confResult',verdict(no,na,tot){
+    if(na===tot)return['n','尚未開始評估。逐題點選後會在此顯示判定。'];
+    let v;
+    if(no>4)v=['r',`「無法答是」已達 ${no} 項（>4）：建議直接拒絕此會議邀請。`];
+    else if(no>=3)v=['a',`「無法答是」${no} 項：接近門檻，請補齊查證（主辦學會、過往論文集、費用結構）後再決定。`];
+    else v=['g',`目前「無法答是」${no} 項（≤4）：尚未達拒絕門檻。`];
+    if(na>0)v[1]+=` 仍有 ${na} 題未評估，結論可能改變。`;
+    return v;}}
+};
+function buildChecklist(key){
+  const cfg=CHECKS[key],box=$('#'+cfg.box);box.innerHTML='';
+  const st=store.get('check.'+key,{});let idx=0;
+  cfg.data.forEach(([g,items])=>{
+    const grp=document.createElement('div');grp.className='chk-group';grp.innerHTML=`<h4>${esc(g)}</h4>`;
+    items.forEach(q=>{
+      const id=idx++;const row=document.createElement('div');row.className='chk-item '+(st[id]||'');
+      row.innerHTML=`<div class="q">${esc(q)}</div><div class="seg"><button class="yes ${st[id]==='yes'?'on':''}">是</button><button class="no ${st[id]==='no'?'on':''}">否</button><button class="na ${!st[id]?'on':''}">未評估</button></div>`;
+      row.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+        const v=b.classList.contains('yes')?'yes':b.classList.contains('no')?'no':'';
+        if(v)st[id]=v;else delete st[id];store.set('check.'+key,st);
+        row.className='chk-item '+(v||'');row.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderResult(key,st);
+      });
+      grp.appendChild(row);
+    });
+    box.appendChild(grp);
+  });
+  renderResult(key,st);
+}
+function renderResult(key,st){
+  const cfg=CHECKS[key];const tot=cfg.data.reduce((a,[,i])=>a+i.length,0);
+  const vals=Object.values(st);const yes=vals.filter(v=>v==='yes').length,no=vals.filter(v=>v==='no').length,na=tot-yes-no;
+  const [cls,msg]=cfg.verdict(no,na,tot);
+  $('#'+cfg.res).innerHTML=`<div class="stat"><div><b style="color:var(--green)">${yes}</b><span>答「是」</span></div><div><b style="color:var(--red)">${no}</b><span>無法答是</span></div><div><b style="color:var(--muted)">${na}</b><span>未評估</span></div><div><b>${tot}</b><span>總題數</span></div></div><div class="verdict ${cls}">${msg}</div>`;
+}
+function resetChecklist(key){if(!confirm('確定要清除這份檢核清單的所有勾選嗎？'))return;store.set('check.'+key,{});buildChecklist(key)}
+buildChecklist('journal');buildChecklist('conf');
+
+/* ---------- accordion ---------- */
+document.querySelectorAll('.acc > button').forEach(b=>b.onclick=()=>b.parentElement.classList.toggle('open'));
+
+/* ---------- lightbox ---------- */
+(function(){
+  const lb=$('#lb'),img=$('#lbImg'),cap=$('#lbCap');
+  document.querySelectorAll('figure img').forEach(i=>i.addEventListener('click',()=>{img.src=i.src;img.alt=i.alt;cap.textContent=i.alt;lb.classList.add('open');document.body.style.overflow='hidden'}));
+  const close=()=>{lb.classList.remove('open');document.body.style.overflow=''};
+  lb.addEventListener('click',e=>{if(e.target!==img)close()});$('#lbClose').onclick=close;
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+})();
+
+/* ---------- 導覽：進度條、回頂、scrollspy、抽屜 ---------- */
+(function(){
+  const prog=$('#progress'),top=$('#totop'),toc=$('#toc'),bg=$('#drawerBg');
+  const links=[...document.querySelectorAll('.toc a[href^="#"], .topnav a[href^="#"]')];
+  const targets=[...document.querySelectorAll('h3[id], section.part[id], #top')];
+  function onScroll(){
+    const h=document.documentElement;const p=h.scrollTop/(h.scrollHeight-h.clientHeight);prog.style.width=(p*100)+'%';
+    top.classList.toggle('show',h.scrollTop>600);
+    let cur=null;for(const t of targets){if(t.getBoundingClientRect().top<=110)cur=t}
+    if(!cur)return;
+    const secId=cur.closest('section')?.id||cur.id;
+    document.querySelectorAll('.toc ul a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur.id));
+    document.querySelectorAll('.topnav a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+secId));
+  }
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  top.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+  const openD=()=>{toc.classList.add('open');bg.classList.add('show')},closeD=()=>{toc.classList.remove('open');bg.classList.remove('show')};
+  $('#menuBtn').onclick=openD;bg.onclick=closeD;
+  links.forEach(a=>a.addEventListener('click',closeD));
+})();
+</script>
+</body>
+</html>
